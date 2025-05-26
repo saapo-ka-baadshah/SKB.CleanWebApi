@@ -1,5 +1,8 @@
 ﻿using JetBrains.Annotations;
+using SKB.App.Application;
+using SKB.App.CleanWebApi.Http.Extensions;
 using SKB.Core.Hosting.Extensions.Configurations;
+using SKB.Core.Hosting.Extensions.Instrumentations;
 using SKB.Core.Hosting.Extensions.OpenTelemetry;
 using SKB.Core.Hosting.Extensions.WebApi;
 
@@ -16,14 +19,21 @@ internal class Program
         // Standard Configurations
         builder.AddConfigurations();
 		builder.AddOpenTelemetry();
+		builder.AddOpenTelemetryApiExtensions<Program>();
+		builder.Services.AddInstrumentation<Program>();
 
 		// Standard Service Configurations
+		builder.Services.AddMediatR(
+			cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly)
+			);
 		builder.Services.AddMvcCore().AddApiExplorer();
 		builder.Services.AddEndpointsApiExplorer();
 		builder.Services.AddSwaggerGen(o =>
 		{
 			o.SwaggerDoc("v1", new() { Title = "CleanWebApi", Version = "v1" });
 		});
+
+		builder.Services.AddApplication();
 
 		// Create the application
 		WebApplication app = builder.Build();

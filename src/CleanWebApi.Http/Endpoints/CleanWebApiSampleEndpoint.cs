@@ -1,4 +1,7 @@
-﻿using SKB.Core.Abstractions.WebApi;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using SKB.App.Contracts.GetWeatherForecast;
+using SKB.Core.Abstractions.WebApi;
 
 namespace SKB.App.CleanWebApi.Http.Endpoints;
 
@@ -20,17 +23,13 @@ public class CleanWebApiSampleEndpoint: IBaseEndpoint
 			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 		};
 
-		app.MapGet("/weatherforecast", () =>
+		app.MapGet("/weatherforecast", async (
+				IMediator mediator
+				) =>
 			{
-				var forecast = Enumerable.Range(1, 5).Select(index =>
-						new WeatherForecast
-						(
-							DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-							Random.Shared.Next(-20, 55),
-							summaries[Random.Shared.Next(summaries.Length)]
-						))
-					.ToArray();
-				return forecast;
+				var req = new GetWeatherForecastQuery();
+				var responseDto = await mediator.Send(req);
+				return responseDto;
 			})
 			.WithName("GetWeatherForecast")
 			.WithSummary("This is a sample API Endpoint")
