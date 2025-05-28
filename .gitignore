@@ -1,6 +1,12 @@
 ﻿# Project Generated Files
 artifacts/
 
+# Environment files
+.env
+
+# Ignore the idea directories
+.idea/
+
 # Project Configuration files
 # EditorConfig is added by SKB.Core.EditorConfig
 .editorconfig

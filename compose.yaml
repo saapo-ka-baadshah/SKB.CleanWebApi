@@ -1,6 +1,0 @@
-﻿services:
-  cleanwebapi.http:
-    image: cleanwebapi.http
-    build:
-      context: .
-      dockerfile: src/CleanWebApi.Http/Dockerfile
