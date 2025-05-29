@@ -1,0 +1,23 @@
+secrets:
+    ghUser_definition:
+        environment: GITHUB_USERNAME
+    ghPass_definition:
+        environment: GITHUB_PACKAGES_FEED_PAT
+
+services:
+    cleanwebapi.http:
+        image: cleanwebapi.http
+        build:
+            context: .
+            dockerfile: ../../Dockerfile
+            secrets:
+                - source: ghUser_definition
+                  target: ghUser
+
+                - source: ghPass_definition
+                  target: ghPass
+        ports:
+            -   "8080:8080"
+        networks:
+            observer-net:
+                # Add your static IP Requirements here
