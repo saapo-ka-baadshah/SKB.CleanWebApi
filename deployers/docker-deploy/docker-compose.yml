@@ -105,12 +105,12 @@ services:
       - 55679:55679
     networks:
       - observer-net
-    healthcheck:
-      test: "wget --spider -q --tries=1 -O- http://localhost:13133 | grep -o '\"status\": *\"[^\"]*\"' | sed 's/\"status\": *\"//;s/\"//' || exit 1"
-      interval: 1m30s
-      timeout: 30s
-      retries: 5
-      start_period: 30s
+#    healthcheck:
+#      test: "wget --spider -q --tries=1 -O- http://localhost:13133 | grep -o '\"status\": *\"[^\"]*\"' | sed 's/\"status\": *\"//;s/\"//' || exit 1"
+#      interval: 1m30s
+#      timeout: 30s
+#      retries: 5
+#      start_period: 30s
     depends_on:
       loki:
         condition: service_healthy

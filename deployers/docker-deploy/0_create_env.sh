@@ -37,6 +37,11 @@ generate_random_passwords(){
 	_update_or_append_env_var "GRAFANA_ADMIN_PASSWORD" "$(head -c 16 /dev/urandom | base64 | tr -dc 'a-zA-Z0-9')" "$ENV_FILE"
 }
 
+# Generate project root and fix it
+fix_project_root(){
+	_update_or_append_env_var "PROJECT_ROOT" "$(git rev-parse --show-toplevel)" "$ENV_FILE"
+}
+
 # Function to load environment variables from .env file
 load_env() {
   if [ -f "$ENV_FILE" ]; then
@@ -187,6 +192,14 @@ test_github_token() {
 load_env
 
 NEEDS_SAVE=false
+
+# Fix the project root
+echo $LINE_SEPERATOR
+echo "Fixing project root"
+fix_project_root
+echo $LINE_SEPERATOR
+echo "DONE"
+echo $LINE_SEPERATOR
 
 # Prompt for Username if not loaded
 if [ -z "$GITHUB_USERNAME" ]; then

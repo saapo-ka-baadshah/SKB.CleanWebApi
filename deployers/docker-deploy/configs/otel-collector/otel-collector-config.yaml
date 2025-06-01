@@ -13,7 +13,7 @@ receivers:
 processors:
   batch:
     send_batch_size: 512
-    timeout: 5s  
+    timeout: 5s
   memory_limiter:
     check_interval: 1s
     limit_mib: 1000
@@ -37,8 +37,8 @@ processors:
 exporters:
   debug:
     verbosity: detailed
-  
-  # Loki Exporter explicitly 
+
+  # Loki Exporter explicitly
   otlphttp:
     endpoint: http://skb-loki:3100/otlp
     encoding: json
@@ -48,10 +48,10 @@ exporters:
     endpoint: "0.0.0.0:8889"
 
   otlphttp/to_jaeger:
-    endpoint: "skb-jaeger:14268"
+    endpoint: "skb-jaeger:4318"
     tls:
       insecure: true # Fine for local dev; use proper certs for production
-  
+
 service:
   extensions: [health_check, zpages]
   pipelines:

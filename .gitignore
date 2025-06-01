@@ -20,3 +20,5 @@ riderModule.iml
 /_ReSharper.Caches/
 
 [Oo]ut/
+
+.DS_Store

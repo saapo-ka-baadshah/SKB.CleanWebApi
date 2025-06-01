@@ -1,3 +1,7 @@
+networks:
+    observer-net:
+        driver: bridge
+
 secrets:
     ghUser_definition:
         environment: GITHUB_USERNAME
@@ -8,8 +12,8 @@ services:
     cleanwebapi.http:
         image: cleanwebapi.http
         build:
-            context: .
-            dockerfile: ../../Dockerfile
+            context: ${PROJECT_ROOT}
+            dockerfile: ${PROJECT_ROOT}/Dockerfile
             secrets:
                 - source: ghUser_definition
                   target: ghUser
@@ -19,5 +23,5 @@ services:
         ports:
             -   "8080:8080"
         networks:
-            observer-net:
+            -   observer-net
                 # Add your static IP Requirements here
