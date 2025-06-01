@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using SKB.App.Application.Meters.RequestCounter;
 using SKB.App.Contracts.GetWeatherForecast;
 
 namespace SKB.App.Application.GetWeatherForecast;
@@ -12,6 +13,7 @@ public class GetWeatherForecastQueryHandler: IRequestHandler<GetWeatherForecastQ
 {
 	private readonly ILogger<GetWeatherForecastQueryHandler> _logger;
 	private readonly ActivitySource _activitySource;
+	private readonly IRequestCounter _requestCounter;
 
 	private readonly string[] _summaries = new[]
 	{
@@ -23,13 +25,16 @@ public class GetWeatherForecastQueryHandler: IRequestHandler<GetWeatherForecastQ
 	/// </summary>
 	/// <param name="logger">Injected Logger</param>
 	/// <param name="activitySource">Injected Activity Source for Tracing</param>
+	/// <param name="requestCounter">Injected Request Counter</param>
 	public GetWeatherForecastQueryHandler(
 		ILogger<GetWeatherForecastQueryHandler> logger,
-		ActivitySource activitySource
+		ActivitySource activitySource,
+		IRequestCounter requestCounter
 		)
 	{
 		this._logger = logger;
 		this._activitySource = activitySource;
+		this._requestCounter = requestCounter;
 	}
 
 	/// <summary>
@@ -40,6 +45,7 @@ public class GetWeatherForecastQueryHandler: IRequestHandler<GetWeatherForecastQ
 	/// <returns></returns>
 	public Task<GetWeatherForecastQueryDto> Handle(GetWeatherForecastQuery request, CancellationToken cancellationToken)
 	{
+		this._requestCounter.Add(1);
 		using var activity =
 			this._activitySource
 				.StartActivity($"{nameof(GetWeatherForecastQueryHandler)}.Trace");
