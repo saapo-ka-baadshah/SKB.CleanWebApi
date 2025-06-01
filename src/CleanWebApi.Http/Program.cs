@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using SKB.App.Application;
+using SKB.App.Application.Meters;
 using SKB.App.CleanWebApi.Http.Extensions;
 using SKB.Core.Hosting.Extensions.Configurations;
 using SKB.Core.Hosting.Extensions.Instrumentations;
@@ -20,7 +21,10 @@ internal class Program
         builder.AddConfigurations();
 		builder.AddOpenTelemetry();
 		builder.AddOpenTelemetryApiExtensions<Program>();
+		// Add Tracing
 		builder.Services.AddInstrumentation<Program>();
+		// Add Metrics
+		builder.Services.AddMetersInjection<Program>();
 
 		// Standard Service Configurations
 		builder.Services.AddMediatR(
