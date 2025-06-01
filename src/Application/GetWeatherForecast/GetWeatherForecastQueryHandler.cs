@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using SKB.App.Contracts.GetWeatherForecast;
+using SKB.App.Domain.GetWeatherForecast;
 
 namespace SKB.App.Application.GetWeatherForecast;
 
@@ -12,11 +13,7 @@ public class GetWeatherForecastQueryHandler: IRequestHandler<GetWeatherForecastQ
 {
 	private readonly ILogger<GetWeatherForecastQueryHandler> _logger;
 	private readonly ActivitySource _activitySource;
-
-	private readonly string[] _summaries = new[]
-	{
-		"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-	};
+	private readonly GetWeatherForecastController _controller;
 
 	/// <summary>
 	/// Constructor for the Handler
@@ -30,6 +27,11 @@ public class GetWeatherForecastQueryHandler: IRequestHandler<GetWeatherForecastQ
 	{
 		this._logger = logger;
 		this._activitySource = activitySource;
+
+		// This can also be added as a Singleton to save resources
+		//		Here, this dependency injection pattern is overlooked in order
+		//		to keep it simple
+		this._controller = new GetWeatherForecastController();
 	}
 
 	/// <summary>
@@ -50,14 +52,10 @@ public class GetWeatherForecastQueryHandler: IRequestHandler<GetWeatherForecastQ
 		activity?.AddEvent(new ActivityEvent("GetWeatherForecastQueryHandler: Server Process Started"));
 
 		this._logger.LogInformation("GetWeatherForecastQueryHandler Called");
-		var forecast = Enumerable.Range(1, 5).Select(index =>
-				new GetWeatherForecastTransmissionData
-				(
-					DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-					Random.Shared.Next(-20, 55),
-					_summaries[Random.Shared.Next(_summaries.Length)]
-				))
-			.ToArray();
+
+		// Get the Weather information from the Weather Controller
+		var forecast = this._controller.GetWeatherForecast();
+
 		var response = new GetWeatherForecastQueryDto(
 				TransmissionData: forecast,
 				new KeyValuePair<string, object?>("Trace.RequestContext", activity?.Context)

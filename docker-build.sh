@@ -9,7 +9,7 @@ if [ $EXIT_STATUS -ne 0 ]; then
   exit 1
 fi
 
-ENV_FILE_PATH="$GIT_REPO_ROOT/.env"
+ENV_FILE_PATH="$GIT_REPO_ROOT/deployers/docker-deploy/.env"
 
 echo "Checking for .env file at repository root: $GIT_REPO_ROOT"
 
