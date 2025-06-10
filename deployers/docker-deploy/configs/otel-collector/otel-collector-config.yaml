@@ -48,7 +48,7 @@ exporters:
     endpoint: "0.0.0.0:8889"
 
   otlphttp/to_jaeger:
-    endpoint: "skb-jaeger:4318"
+    endpoint: http://skb-jaeger:4318
     tls:
       insecure: true # Fine for local dev; use proper certs for production
 

@@ -1,6 +1,7 @@
 ﻿<Project>
     <PropertyGroup>
         <NoWarn>NU1507</NoWarn>
+		<NoWarn>NU1504</NoWarn>
     </PropertyGroup>
     <Choose>
         <When Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(AssemblyName), '.*[.]Test(s|ing)$'))">
