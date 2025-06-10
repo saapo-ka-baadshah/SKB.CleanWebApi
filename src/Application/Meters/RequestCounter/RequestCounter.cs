@@ -18,7 +18,7 @@ public class RequestCounter<TAssembly>: IRequestCounter
 	public RequestCounter(Meter meter)
 	{
 		this._requestCounter = meter.CreateCounter<int>(
-			$"{typeof(Assembly).Namespace}.RequestCounter",
+			$"{typeof(TAssembly).Namespace}.RequestCounter",
 			"requests",
 			"Total number of Requests handled by the assembly"
 			);
