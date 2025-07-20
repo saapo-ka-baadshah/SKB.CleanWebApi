@@ -1,7 +1,13 @@
 ﻿using JetBrains.Annotations;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using SKB.App.Application;
 using SKB.App.Application.Meters;
+using SKB.App.ChatService.Core;
 using SKB.App.CleanWebApi.Http.Extensions;
+using SKB.App.CleanWebApi.Http.Middlewares;
+using SKB.App.Infrastructure.Messaging;
 using SKB.Core.Hosting.Extensions.Configurations;
 using SKB.Core.Hosting.Extensions.Instrumentations;
 using SKB.Core.Hosting.Extensions.OpenTelemetry;
@@ -21,6 +27,12 @@ internal class Program
         builder.AddConfigurations();
 		builder.AddOpenTelemetry();
 		builder.AddOpenTelemetryApiExtensions<Program>();
+
+		// Add AI chat service
+		builder.Services.AddCoreChatService(builder.Configuration);
+		// Add event bus to the infrastructure
+		builder.Services.AddMessagingInfrastructure(builder.Configuration);
+
 		// Add Tracing
 		builder.Services.AddInstrumentation<Program>();
 		// Add Metrics
@@ -57,6 +69,8 @@ internal class Program
 		app.UseHttpsRedirection();
 
 		app.AddEndpoints<Program>();
+
+		app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 		// Run the application
 		app.Run();

@@ -8,6 +8,6 @@ namespace SKB.App.Contracts.GetWeatherForecast;
 /// <param name="TransmissionData"></param>
 /// <param name="Metadata"></param>
 public record GetWeatherForecastQueryDto(
-		GetWeatherForecastTransmissionData[] TransmissionData,
+		GetWeatherForecastTransmissionData[]? TransmissionData,
 		params KeyValuePair<string, object?>[]? Metadata
 	);
