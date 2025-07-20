@@ -141,6 +141,8 @@ services:
         condition: service_healthy
       fluent-bit:
         condition: service_started
+      rabbitmq:
+          condition: service_started
     networks:
       - observer-net
     logging: *logging-ext
@@ -161,3 +163,22 @@ services:
       - otel-collector
     networks:
       - observer-net
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: unless-stopped
+    command: >
+        sh -c "rabbitmq-server"
+    depends_on:
+        fluent-bit:
+            condition: service_started
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: ${RABBIT_ADMIN_PASSWORD}
+    logging: *logging-ext
+    networks:
+        - observer-net

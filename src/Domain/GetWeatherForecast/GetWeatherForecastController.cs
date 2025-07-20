@@ -5,6 +5,8 @@ namespace SKB.App.Domain.GetWeatherForecast;
 /// </summary>
 public class GetWeatherForecastController
 {
+	List<bool> _throwRandomError = new List<bool>(){true, false};
+
 	private readonly string[] _summaries =
 	[
 		"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -16,6 +18,11 @@ public class GetWeatherForecastController
 	/// <returns>Returns a <see cref="GetWeatherForecastTransmissionData"/> object</returns>
 	public GetWeatherForecastTransmissionData[] GetWeatherForecast()
 	{
+		if (Random.Shared.GetItems(_throwRandomError.ToArray(), 1).FirstOrDefault())
+		{
+			throw new Exception("Something went wrong");
+		}
+
 		return Enumerable.Range(1, 5).Select(index =>
 				new GetWeatherForecastTransmissionData
 				(

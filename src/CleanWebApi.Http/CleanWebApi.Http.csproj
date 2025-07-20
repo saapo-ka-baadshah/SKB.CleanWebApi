@@ -12,6 +12,8 @@
         <PackageReference Include="MediatR" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
         <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
+        <PackageReference Include="skb.app.chatservice.abstractions" />
+        <PackageReference Include="skb.app.chatservice.core" />
         <PackageReference Include="SKB.Core.Hosting" />
         <!--For SKB.Core.LicenseConfig-->
         <PackageReference Include="SKB.Core.LicenseConfig">
@@ -38,6 +40,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Application\Application.csproj" />
       <ProjectReference Include="..\Contracts\Contracts.csproj" />
+      <ProjectReference Include="..\Infrastructure.Messaging\Infrastructure.Messaging.csproj" />
     </ItemGroup>
 
 </Project>

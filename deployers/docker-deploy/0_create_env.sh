@@ -35,6 +35,8 @@ _update_or_append_env_var() {
 generate_random_passwords(){
 	# Generate password for GRAFANA ADMIN
 	_update_or_append_env_var "GRAFANA_ADMIN_PASSWORD" "$(head -c 16 /dev/urandom | base64 | tr -dc 'a-zA-Z0-9')" "$ENV_FILE"
+	# Generate password for RABBIT ADMIN
+	_update_or_append_env_var "RABBIT_ADMIN_PASSWORD" "$(head -c 16 /dev/urandom | base64 | tr -dc 'a-zA-Z0-9')" "$ENV_FILE"
 }
 
 # Generate project root and fix it

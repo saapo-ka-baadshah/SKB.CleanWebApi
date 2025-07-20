@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using MassTransit;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using SKB.App.Application.Meters.RequestCounter;
@@ -16,6 +17,7 @@ public class GetWeatherForecastQueryHandler: IRequestHandler<GetWeatherForecastQ
 	private readonly ActivitySource _activitySource;
 	private readonly GetWeatherForecastController _controller;
 	private readonly IRequestCounter _requestCounter;
+	private readonly IPublishEndpoint _publishEndpoint;
 
 	/// <summary>
 	/// Constructor for the Handler
@@ -23,20 +25,21 @@ public class GetWeatherForecastQueryHandler: IRequestHandler<GetWeatherForecastQ
 	/// <param name="logger">Injected Logger</param>
 	/// <param name="activitySource">Injected Activity Source for Tracing</param>
 	/// <param name="requestCounter">Injected Request Counter</param>
+	/// <param name="publishEndpoint">Injected bus publishing endpoint from MassTransit</param>
 	public GetWeatherForecastQueryHandler(
 		ILogger<GetWeatherForecastQueryHandler> logger,
 		ActivitySource activitySource,
-		IRequestCounter requestCounter
+		IRequestCounter requestCounter,
+		IPublishEndpoint publishEndpoint
 		)
 	{
 		this._logger = logger;
 		this._activitySource = activitySource;
 
-		// This can also be added as a Singleton to save resources
-		//		Here, this dependency injection pattern is overlooked in order
-		//		to keep it simple
+		// TODO: Inject it with dependency injection
 		this._controller = new GetWeatherForecastController();
 		this._requestCounter = requestCounter;
+		this._publishEndpoint = publishEndpoint;
 	}
 
 	/// <summary>
@@ -59,7 +62,6 @@ public class GetWeatherForecastQueryHandler: IRequestHandler<GetWeatherForecastQ
 
 		this._logger.LogInformation("GetWeatherForecastQueryHandler Called");
 
-		// Get the Weather information from the Weather Controller
 		var forecast = this._controller.GetWeatherForecast();
 
 		var response = new GetWeatherForecastQueryDto(

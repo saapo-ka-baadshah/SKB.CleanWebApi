@@ -1,35 +1,19 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AEndpointExtensions_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003F_002E_002E_003F_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003Fba012022074d42598da422fc4177ab772a00_003Ff1_003Ff5c8b623_003FEndpointExtensions_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AExceptionDispatchInfo_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003F_002E_002E_003F_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003Fbd1d5c50194fea68ff3559c160230b0ab50f5acf4ce3061bffd6d62958e2182_003FExceptionDispatchInfo_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AInstrumentationExtensions_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FLibrary_003FApplication_0020Support_003FJetBrains_003FRider2025_002E1_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003F428ec14e377744f28a686242d7b9a4cc3200_003F76_003F1e9260b3_003FInstrumentationExtensions_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AInstrumentationExtensions_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FLibrary_003FApplication_0020Support_003FJetBrains_003FRider2025_002E1_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003F451b15e1d0df4038aacc0b2104151fda2e00_003F3e_003F7bc6bf8e_003FInstrumentationExtensions_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=61fde17f_002D6a0f_002D459b_002D988a_002Da1f483146d1f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestHelloWorld" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;MSTest::8A80A7D6-BF06-4B6B-8D66-DB684F37C938::net9.0::SKB.App.Architecture.Tests.TestHelloWorld&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
+  &lt;Assembly Path="/Users/ameymahadik/.nuget/packages/skb.app.chatservice.eventconsumers/9.0.0-preview.2/lib/net9.0/SKB.App.ChatService.EventConsumers.dll" /&gt;
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=460b300e_002D55a0_002D4798_002Da187_002Dd301bffbd586/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Solution /&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=67d5f7ca_002D1f16_002D4907_002Dae66_002D643f3a031a6f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestHelloWorld #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;MSTest::8A80A7D6-BF06-4B6B-8D66-DB684F37C938::net9.0::SKB.App.Architecture.Tests.TestHelloWorld&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8b60bee7_002D683b_002D4bcb_002D8854_002D4e318b74c801/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestHelloWorld #6" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;MSTest::8A80A7D6-BF06-4B6B-8D66-DB684F37C938::net9.0::SKB.App.Architecture.Tests.TestHelloWorld&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c95aba2b_002Ddd57_002D46d3_002D891a_002D3b1f78d4feac/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestHelloWorld #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;MSTest::8A80A7D6-BF06-4B6B-8D66-DB684F37C938::net9.0::SKB.App.Architecture.Tests.TestHelloWorld&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d0763d4a_002Dc9d2_002D4389_002Db799_002Dd3f132cbd044/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestHelloWorld #5" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;MSTest::8A80A7D6-BF06-4B6B-8D66-DB684F37C938::net9.0::SKB.App.Architecture.Tests.ProjectDependencyTests&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f79edc45_002D97db_002D4570_002D9f80_002D43f2814d3487/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestHelloWorld #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;MSTest::8A80A7D6-BF06-4B6B-8D66-DB684F37C938::net9.0::SKB.App.Architecture.Tests.TestHelloWorld&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
+	
+	
+	
+	
+	
+	
+	
 	</wpf:ResourceDictionary>
