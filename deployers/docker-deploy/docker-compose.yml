@@ -7,6 +7,7 @@ volumes:
   prometheus_data:
   loki_data:
   grafana_data:
+  keycloak_data:
 #################################################
 
 ############################## Logging Extensions
@@ -31,6 +32,10 @@ x-logging-ext: &logging-ext
 #
 # SEQUENCE 3:
 #   1. fluent-bit
+#
+# SEQUENCE 3:
+#   1. rabbitmq
+#   2. keycloak
 # Finally, fluent-bit which depends on otel-collector for log sourcing and Loki for log sinking
 services:
   loki:
@@ -174,11 +179,24 @@ services:
         fluent-bit:
             condition: service_started
     ports:
-      - 5672:5672
-      - 15672:15672
+      - "5672:5672"
+      - "15672:15672"
     environment:
       RABBITMQ_DEFAULT_USER: admin
       RABBITMQ_DEFAULT_PASS: ${RABBIT_ADMIN_PASSWORD}
     logging: *logging-ext
     networks:
         - observer-net
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
+    command: start-dev
+    environment:
+        - KC_HEALTH_ENABLED=true
+        - KEYCLOAK_ADMIN=admin
+        - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD}
+    volumes:
+        - keycloak_data:/opt/keycloak/data
+    ports:
+        - "18080:8080"

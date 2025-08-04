@@ -72,6 +72,9 @@ internal class Program
 
 		app.UseMiddleware<ExceptionHandlingMiddleware>();
 
+		// Add Auth
+		// app.UseAuthentication().UseAuthorization();
+
 		// Run the application
 		app.Run();
     }
