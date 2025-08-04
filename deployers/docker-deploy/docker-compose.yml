@@ -32,11 +32,16 @@ x-logging-ext: &logging-ext
 #
 # SEQUENCE 3:
 #   1. fluent-bit
+# Finally, fluent-bit which depends on otel-collector for log sourcing and Loki for log sinking
 #
 # SEQUENCE 3:
 #   1. rabbitmq
 #   2. keycloak
-# Finally, fluent-bit which depends on otel-collector for log sourcing and Loki for log sinking
+#
+# DECENTRALIZED SEQUENCES:
+#   1. Ollama (runs either on cloud or over an on-premise hosted machine)
+#           Ollama needs to be capable of performing powerful operations, hence needs a resource intensive machine
+
 services:
   loki:
     image: docker.io/grafana/loki:latest
