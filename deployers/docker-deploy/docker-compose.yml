@@ -1,4 +1,5 @@
 networks:
+  default:
   observer-net:
     driver: bridge
 
@@ -176,6 +177,7 @@ services:
 
   rabbitmq:
     image: rabbitmq:3-management
+    hostname: skb-rabbitmq
     container_name: rabbitmq
     restart: unless-stopped
     command: >
@@ -195,6 +197,7 @@ services:
 
   keycloak:
     image: quay.io/keycloak/keycloak:latest
+    hostname: skb-keycloak
     container_name: keycloak
     command: start-dev
     environment:

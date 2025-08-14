@@ -10,7 +10,6 @@ secrets:
 
 services:
     cleanwebapi.http:
-        image: cleanwebapi.http
         build:
             context: ${PROJECT_ROOT}
             dockerfile: ${PROJECT_ROOT}/Dockerfile
@@ -20,6 +19,13 @@ services:
 
                 - source: ghPass_definition
                   target: ghPass
+        depends_on:
+            rabbitmq:
+                condition: service_started
+            keycloak:
+                condition: service_started
+            grafana:
+                condition: service_started
         ports:
             -   "8080:8080"
         networks:
