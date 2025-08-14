@@ -1,14 +1,12 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using SKB.App.Contracts.GetWeatherForecast;
 using SKB.Core.Abstractions.WebApi;
 
 namespace SKB.App.CleanWebApi.Http.Endpoints;
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-	public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
 
 /// <summary>
 /// CleanWebApi's Sample Endpoint to demonstrate the Functionalities
@@ -18,11 +16,6 @@ public class CleanWebApiSampleEndpoint: IBaseEndpoint
 	/// <inheritdoc/>
 	public void RegisterAllMethods(IEndpointRouteBuilder app)
 	{
-		var summaries = new[]
-		{
-			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-		};
-
 		app.MapGet("/weatherforecast", async (
 				IMediator mediator
 				) =>
@@ -30,6 +23,10 @@ public class CleanWebApiSampleEndpoint: IBaseEndpoint
 				var req = new GetWeatherForecastQuery();
 				var responseDto = await mediator.Send(req);
 				return responseDto;
+			})
+			.RequireAuthorization(new AuthorizeAttribute
+			{
+				Roles = "user"
 			})
 			.WithName("GetWeatherForecast")
 			.WithSummary("This is a sample API Endpoint")

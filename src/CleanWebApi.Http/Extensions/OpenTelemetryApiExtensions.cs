@@ -1,4 +1,6 @@
 ﻿using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using OpenTelemetry.Resources;
 
 namespace SKB.App.CleanWebApi.Http.Extensions;

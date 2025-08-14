@@ -21,8 +21,9 @@
     <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0" />
     <PackageVersion Include="skb.app.chatservice.abstractions" Version="9.0.0-preview.2" />
     <PackageVersion Include="skb.app.chatservice.core" Version="9.0.0-preview.2" />
+    <PackageVersion Include="skb.core.abstractions" Version="9.0.13" />
     <PackageVersion Include="SKB.Core.EditorConfig" Version="9.0.2" />
-    <PackageVersion Include="SKB.Core.Hosting" Version="9.0.12" />
+    <PackageVersion Include="skb.core.hosting" Version="9.0.13" />
     <PackageVersion Include="skb.core.licenseconfig" Version="9.0.2" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="8.1.2" />
     <PackageVersion Include="Swashbuckle.AspNetCore.Swagger" Version="8.1.2" />

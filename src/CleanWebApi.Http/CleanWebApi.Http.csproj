@@ -14,7 +14,8 @@
         <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
         <PackageReference Include="skb.app.chatservice.abstractions" />
         <PackageReference Include="skb.app.chatservice.core" />
-        <PackageReference Include="SKB.Core.Hosting" />
+        <PackageReference Include="skb.core.abstractions" />
+        <PackageReference Include="skb.core.hosting" />
         <!--For SKB.Core.LicenseConfig-->
         <PackageReference Include="SKB.Core.LicenseConfig">
             <IncludeAssets>build</IncludeAssets>
