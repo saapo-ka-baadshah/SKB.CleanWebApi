@@ -1,6 +1,11 @@
+using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using MassTransit;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using SKB.App.ChatService.Abstractions.Events;
 
 namespace SKB.App.CleanWebApi.Http.Middlewares;

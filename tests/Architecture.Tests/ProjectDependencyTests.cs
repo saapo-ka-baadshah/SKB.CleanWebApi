@@ -1,6 +1,7 @@
 using NetArchTest.Rules;
 using System.Reflection;
 using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SKB.App.Domain;
 
 namespace SKB.App.Architecture.Tests;

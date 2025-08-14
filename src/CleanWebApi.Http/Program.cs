@@ -8,6 +8,7 @@ using SKB.App.ChatService.Core;
 using SKB.App.CleanWebApi.Http.Extensions;
 using SKB.App.CleanWebApi.Http.Middlewares;
 using SKB.App.Infrastructure.Messaging;
+using SKB.Core.Hosting.Extensions.Auth;
 using SKB.Core.Hosting.Extensions.Configurations;
 using SKB.Core.Hosting.Extensions.Instrumentations;
 using SKB.Core.Hosting.Extensions.OpenTelemetry;
@@ -44,10 +45,11 @@ internal class Program
 			);
 		builder.Services.AddMvcCore().AddApiExplorer();
 		builder.Services.AddEndpointsApiExplorer();
-		builder.Services.AddSwaggerGen(o =>
-		{
-			o.SwaggerDoc("v1", new() { Title = "CleanWebApi", Version = "v1" });
-		});
+
+		// Add Auth
+		builder.Services.AddCoreAuthLayer(builder.Configuration);
+
+		builder.Services.AddSwaggerGenWithAuth(builder.Configuration);
 
 		builder.Services.AddApplication();
 
@@ -67,6 +69,7 @@ internal class Program
 		app.UseRouting();
 
 		app.UseHttpsRedirection();
+		app.UseAuthorization();
 
 		app.AddEndpoints<Program>();
 
