@@ -1,4 +1,5 @@
 networks:
+  default:
   observer-net:
     driver: bridge
 
@@ -176,6 +177,7 @@ services:
 
   rabbitmq:
     image: rabbitmq:3-management
+    hostname: skb-rabbitmq
     container_name: rabbitmq
     restart: unless-stopped
     command: >
@@ -195,12 +197,13 @@ services:
 
   keycloak:
     image: quay.io/keycloak/keycloak:latest
+    hostname: skb-keycloak
     container_name: keycloak
     command: start-dev
     environment:
         - KC_HEALTH_ENABLED=true
-        - KEYCLOAK_ADMIN=admin
-        - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD}
+        - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+        - KC_BOOTSTRAP_ADMIN_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD}
     volumes:
         - keycloak_data:/opt/keycloak/data
     ports:
